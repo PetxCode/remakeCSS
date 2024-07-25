@@ -5,10 +5,11 @@ interface iProps {
 }
 
 export const DisplayPart: FC<iProps> = ({ value }) => {
+  console.log(value);
   return (
     <div className={`flex w-full justify-between relative mt-10`}>
       <div
-        className={`animate-bounce absolute z-10 border border-black
+        className={`animate-bounce transition-all duration-300 absolute z-10 border border-black
           ${value ? "top-5 right-5  " : "top-0 left-0 "}
           rounded-md h-[100px] w-[100px] flex justify-center items-center bg-red-200 `}
       >

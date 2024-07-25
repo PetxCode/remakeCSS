@@ -1,5 +1,13 @@
 import Link from "next/link";
-import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
+import {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { Context } from "../global/provider";
 
 interface iProps {
   text?: string;
@@ -20,6 +28,7 @@ export const QuestionPart: FC<iProps> = ({
   answer,
   showPath,
 }) => {
+  const { entry, setEntry } = useContext(Context);
   const [value, setValue] = useState<boolean>(false);
 
   const readValue = (a: string, b: string) => {
@@ -46,6 +55,7 @@ export const QuestionPart: FC<iProps> = ({
   const check = () => {
     if (readValue(text!, answer!)) {
       setValue(true);
+      setEntry(true);
     } else {
       setValue(false);
     }
@@ -54,8 +64,6 @@ export const QuestionPart: FC<iProps> = ({
   useEffect(() => {
     check();
   }, [text]);
-
-  console.log("reading ID: ", showPath);
 
   return (
     <div
@@ -106,7 +114,7 @@ export const QuestionPart: FC<iProps> = ({
           <p>{"}"}</p>
 
           <div className="flex w-full justify-end">
-            <Link href={`${showPath! + 2}`}>
+            <Link href={`${showPath! + 1}`}>
               <button
                 onClick={() => {
                   console.log("Awesome: ", text);

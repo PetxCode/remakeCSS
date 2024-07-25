@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { QuestionPart } from "./components/QuestionPart";
 import { DisplayPart } from "./components/DisplayPart";
 import { usePathname } from "next/navigation";
 import data from "./data/data.json";
+import { Context } from "./global/provider";
 const page = () => {
-  const value = false;
+  const { entry, setEntry } = useContext(Context);
 
   const [text, setText] = useState<string>("");
 
@@ -21,7 +22,9 @@ const page = () => {
     showPath = parseInt(val);
   }
 
-  console.log(showPath);
+  useEffect(() => {
+    setEntry(false);
+  }, []);
 
   return (
     <div className="min-h-[calc(100vh-20px)] ">
@@ -32,10 +35,11 @@ const page = () => {
           insight={data[showPath!]?.insight}
           setText={setText}
           text={text}
+          showPath={showPath}
         />
 
         <div className="h-[500px] order-1 lg:order-2 col-span-1 lg:col-span-3 p-4">
-          <DisplayPart value={value} />
+          <DisplayPart value={entry} />
         </div>
       </div>
     </div>

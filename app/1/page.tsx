@@ -1,15 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { QuestionPart } from "../components/QuestionPart";
 import { DisplayPart } from "../components/DisplayPart";
 import data from "../data/data.json";
 import { usePathname } from "next/navigation";
+import { Context } from "../global/provider";
 
 const page = () => {
+  const { entry, setEntry } = useContext(Context);
   const value = false;
   const [text, setText] = useState<string>("");
-  const [id, setID] = useState<number>(0);
 
   const path = usePathname();
   const val = path.replace("/", "");
@@ -22,7 +23,10 @@ const page = () => {
     showPath = parseInt(val);
   }
 
-  console.log("reading: ", showPath);
+  useEffect(() => {
+    setEntry(false);
+  }, []);
+
   return (
     <div className="min-h-[calc(100vh-20px)] ">
       <div className="grid w-full grid-cols-1 lg:grid-cols-7 gap-4 h-[calc(100vh-20px)]">
@@ -32,11 +36,11 @@ const page = () => {
           insight={data[showPath!]?.insight}
           setText={setText}
           text={text}
-          showPath={id}
+          showPath={showPath}
         />
 
         <div className="h-[500px] order-1 lg:order-2 col-span-1 lg:col-span-3 p-4">
-          <DisplayPart value={value} />
+          <DisplayPart value={entry} />
         </div>
       </div>
     </div>
