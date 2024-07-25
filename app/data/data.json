@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "question": " 1 The squirrels need to get in the same order as their burrows using flex-direction. This CSS property defines the direction items are placed in the container, and accepts the following values:",
+    "insight": "row: Items are placed the same as the text direction. row-reverse: Items are placed opposite to the text direction. column: Items are placed top to bottom. column-reverse: Items are placed bottom to top.",
+    "answer": "justify-content: center"
+  },
+  {
+    "id": 2,
+    "question": "2 The squirrels need to get in the same order as their burrows using flex-direction. This CSS property defines the direction items are placed in the container, and accepts the following values:",
+    "insight": "row: Items are placed the same as the text direction. row-reverse: Items are placed opposite to the text direction. column: Items are placed top to bottom. column-reverse: Items are placed bottom to top.",
+    "answer": "justify-content: center; text-align: center;"
+  }
+]
