@@ -18,6 +18,7 @@ export const QuestionPart: FC<iProps> = ({
   insight,
   question,
   answer,
+  showPath,
 }) => {
   const [value, setValue] = useState<boolean>(false);
 
@@ -54,6 +55,8 @@ export const QuestionPart: FC<iProps> = ({
     check();
   }, [text]);
 
+  console.log("reading ID: ", showPath);
+
   return (
     <div
       className="order-2 lg:order-1 col-span-1 lg:col-span-4 bg-slate-200 
@@ -65,7 +68,7 @@ export const QuestionPart: FC<iProps> = ({
           <p>user</p>
         </div>
         <p className="bg-orange-50 h-[35px] text-[16px] w-[100px] rounded-sm flex justify-center items-center">
-          level {id!}
+          level {showPath! + 1}
         </p>
       </section>
 
@@ -103,14 +106,13 @@ export const QuestionPart: FC<iProps> = ({
           <p>{"}"}</p>
 
           <div className="flex w-full justify-end">
-            {/* <Link href={`${id! + 1}`}>
-              {" "} */}
-            <button
-              onClick={() => {
-                console.log("Awesome: ", text);
-              }}
-              // disabled={!value}
-              className={`px-6 py-2 border rounded-md text-white font-bold 
+            <Link href={`${showPath! + 2}`}>
+              <button
+                onClick={() => {
+                  console.log("Awesome: ", text);
+                }}
+                disabled={!value}
+                className={`px-6 py-2 border rounded-md text-white font-bold 
                     ${
                       value
                         ? "bg-red-400 text-white"
@@ -119,10 +121,10 @@ export const QuestionPart: FC<iProps> = ({
                     
                     
                     `}
-            >
-              Next
-            </button>
-            {/* </Link> */}
+              >
+                Next
+              </button>
+            </Link>
           </div>
         </section>
       </section>

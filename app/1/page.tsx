@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 const page = () => {
   const value = false;
   const [text, setText] = useState<string>("");
+  const [id, setID] = useState<number>(0);
 
   const path = usePathname();
   const val = path.replace("/", "");
@@ -21,6 +22,7 @@ const page = () => {
     showPath = parseInt(val);
   }
 
+  console.log("reading: ", showPath);
   return (
     <div className="min-h-[calc(100vh-20px)] ">
       <div className="grid w-full grid-cols-1 lg:grid-cols-7 gap-4 h-[calc(100vh-20px)]">
@@ -30,6 +32,7 @@ const page = () => {
           insight={data[showPath!]?.insight}
           setText={setText}
           text={text}
+          showPath={id}
         />
 
         <div className="h-[500px] order-1 lg:order-2 col-span-1 lg:col-span-3 p-4">
